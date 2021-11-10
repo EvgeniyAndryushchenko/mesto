@@ -1,0 +1,5 @@
+.photo-grid__annotation {
+  display: flex;
+  padding: 25px 20px 30px;
+  justify-content: space-between;
+}

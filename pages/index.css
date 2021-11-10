@@ -1,0 +1,69 @@
+/* Общие стили */
+
+@import url(../vendor/normalize.css);
+@import url(../fonts/fonts.css);
+@import url(../blocks/body/body.css);
+@import url(../blocks/page/page.css);
+
+/* Шапка сайта */
+
+@import url(../blocks/header/header.css);
+@import url(../blocks/page/__header/page__header.css);
+@import url(../blocks/logo/logo.css);
+@import url(../blocks/logo/_place_header/logo_place_header.css);
+
+/* Контент */
+
+@import url(../blocks/content/content.css);
+
+/* Профиль */
+
+@import url(../blocks/profile/profile.css);
+@import url(../blocks/content/__profile/content__profile.css);
+@import url(../blocks/profile/__add-button-image/profile__add-button-image.css);
+@import url(../blocks/profile/__image/profile__image.css);
+@import url(../blocks/profile/__info/profile__info.css);
+@import url(../blocks/profile/__name/profile__name.css);
+@import url(../blocks/profile/__profession/profile__profession.css);
+@import url(../blocks/profile/__edit-button/profile__edit-button.css);
+@import url(../blocks/profile/__edit-button-image/profile__edit-button-image.css);
+@import url(../blocks/profile/__add-button/profile__add-button.css);
+@import url(../blocks/profile/__add-button-image/profile__add-button-image.css);
+
+/* Галерея */
+
+@import url(../blocks/photo-grid/photo-grid.css);
+@import url(../blocks/content/__photo-grid/content__photo-grid.css);
+@import url(../blocks/photo-grid/__items/photo-grid__items.css);
+@import url(../blocks/photo-grid/__item/photo-grid__item.css);
+@import url(../blocks/photo-grid/__image/photo-grid__image.css);
+@import url(../blocks/photo-grid/__annotation/photo-grid__annotation.css);
+@import url(../blocks/photo-grid/__title/photo-grid__title.css);
+@import url(../blocks/photo-grid/__heart-icon/photo-grid__heart-icon.css);
+
+/* Места */
+
+@import url(../blocks/places/places.css);
+@import url(../blocks/content/__places/content__places.css);
+@import url(../blocks/places/__list/places__list.css);
+@import url(../blocks/place/place.css);
+@import url(../blocks/place/__title/place__title.css);
+@import url(../blocks/place/__website/place__website.css);
+@import url(../blocks/place/__url-heading/place__url-heading.css);
+@import url(../blocks/place/__link/place__link.css);
+@import url(../blocks/place/__image/place__image.css);
+@import url(../blocks/place/__paragraph/place__paragraph.css);
+
+/* Покрытие */
+
+@import url(../blocks/cover/cover.css);
+@import url(../blocks/content/__cover/content__cover.css);
+@import url(../blocks/cover/__link/cover__link.css);
+@import url(../blocks/cover/__title/cover__title.css);
+@import url(../blocks/cover/__subtitle/cover__subtitle.css);
+
+/* Подвал */
+
+@import url(../blocks/footer/footer.css);
+@import url(../blocks/page/__footer/page__footer.css);
+@import url(../blocks/footer/__annotation/footer__annotation.css);

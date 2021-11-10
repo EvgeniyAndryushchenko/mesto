@@ -1,0 +1,15 @@
+.profile__edit-button {
+  position: absolute;
+  top: 7px;
+  right: -30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  border: 1px solid #fff;
+  border-radius: 2px;
+  padding: 4px;
+  box-sizing: border-box;
+  width: 18px;
+  height: 18px;
+}
