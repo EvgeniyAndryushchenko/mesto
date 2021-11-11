@@ -1,4 +1,12 @@
 .profile__image {
   border-radius: 50%;
-  margin: 38px 22px 22px;
+  margin-bottom: 22px;
+  width: 125px;
+}
+
+@media screen and (min-width: 850px) {
+  .profile__image {
+    flex-direction: row;
+    margin-right: 22px;
+  }
 }

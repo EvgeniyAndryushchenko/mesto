@@ -11,5 +11,11 @@
   padding: 0;
 }
 
-
+@media screen and (min-width: 850px) {
+  .profile__profession {
+    flex-direction: row;
+    margin-top: 16px;
+    margin-bottom: 0;
+  }
+}
 
