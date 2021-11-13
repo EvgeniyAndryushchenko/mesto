@@ -1,0 +1,26 @@
+.edit-overlay__submit {
+  width: 100%;
+  background: #000;
+  border-radius: 2px;
+  font-family: Inter, Arial, sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 1.2;
+  text-align: center;
+  color: #fff;
+  padding: 14px 0;
+  border: none;
+  transition: opacity .3s ease-out 0s;
+}
+
+@media screen and (min-width: 580px) {
+  .edit-overlay__submit {
+    font-size: 18px;
+  }
+}
+
+.edit-overlay__submit:hover {
+  cursor: pointer;
+  opacity: .8;
+}

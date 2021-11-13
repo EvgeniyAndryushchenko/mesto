@@ -9,6 +9,7 @@
   box-sizing: border-box;
   border-radius: 2px;
   box-sizing: border-box;
+  transition: opacity .3s ease-out 0s;
 }
 
 @media screen and (min-width: 850px) {
@@ -16,4 +17,9 @@
     width: 150px;
     justify-self: flex-end;
   }
+}
+
+.profile__add-button:hover {
+  cursor: pointer;
+  opacity: .6;
 }

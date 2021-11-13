@@ -1,0 +1,11 @@
+.photo-grid__checkbox-label {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.photo-grid__checkbox-label:hover {
+  transition: opacity .3s ease-out 0s;
+  cursor: pointer;
+  opacity: .5;
+}

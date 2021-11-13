@@ -5,11 +5,11 @@
   padding: 0;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 17px;
+  gap: 20px;
 }
 
-
-
-
-
-
+@media screen and (min-width: 700px) {
+  .photo-grid__items {
+    gap: 20px 16px;
+  }
+}

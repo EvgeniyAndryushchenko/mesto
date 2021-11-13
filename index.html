@@ -36,42 +36,60 @@
               <img class="photo-grid__image" src="./images/karachaevsk.jpg" alt="Древнее строение заросшее травой от старости.">
               <div class="photo-grid__annotation">
                 <p class="photo-grid__title">Карачаевск</p>
-                <img class="photo-grid__heart-icon" src="./images/heart_icon.svg" alt="Отметиь как понравившееся.">
+                <label class="photo-grid__checkbox-label">
+                  <input class="photo-grid__checkbox" type="checkbox">
+                  <img class="photo-grid__heart-icon" src="./images/heart_icon.svg" alt="Отметиь как понравившееся.">
+                </label>
               </div>
             </li>
             <li class="photo-grid__item">
               <img class="photo-grid__image" src="./images/elbrus-mountain.jpg" alt="В лучах заходящего солнца, виднеется гора Эльбрус.">
               <div class="photo-grid__annotation">
                 <p class="photo-grid__title">Гора Эльбрус</p>
-                <img class="photo-grid__heart-icon" src="./images/heart_icon.svg" alt="Отметиь как понравившееся.">
+                <label class="photo-grid__checkbox-label">
+                  <input class="photo-grid__checkbox" type="checkbox">
+                  <img class="photo-grid__heart-icon" src="./images/heart_icon.svg" alt="Отметиь как понравившееся.">
+                </label>
               </div>
             </li>
             <li class="photo-grid__item">
               <img class="photo-grid__image" src="./images/dombai.jpg" alt="Острый скалистый пик возвышается над холмами поросшими лесом.">
               <div class="photo-grid__annotation">
                 <p class="photo-grid__title">Домбай</p>
-                <img class="photo-grid__heart-icon" src="./images/heart_icon.svg" alt="Отметиь как понравившееся.">
+                <label class="photo-grid__checkbox-label">
+                  <input class="photo-grid__checkbox" type="checkbox">
+                  <img class="photo-grid__heart-icon" src="./images/heart_icon.svg" alt="Отметиь как понравившееся.">
+                </label>
               </div>
             </li>
             <li class="photo-grid__item">
               <img class="photo-grid__image" src="./images/elbrus-mountain.jpg" alt="В лучах заходящего солнца, виднеется гора Эльбрус.">
               <div class="photo-grid__annotation">
                 <p class="photo-grid__title">Гора Эльбрус</p>
-                <img class="photo-grid__heart-icon" src="./images/heart_icon.svg" alt="Отметиь как понравившееся.">
+                <label class="photo-grid__checkbox-label">
+                  <input class="photo-grid__checkbox" type="checkbox">
+                  <img class="photo-grid__heart-icon" src="./images/heart_icon.svg" alt="Отметиь как понравившееся.">
+                </label>
               </div>
             </li>
             <li class="photo-grid__item">
               <img class="photo-grid__image" src="./images/dombai.jpg" alt="Острый скалистый пик возвышается над холмами поросшими лесом.">
               <div class="photo-grid__annotation">
                 <p class="photo-grid__title">Домбай</p>
-                <img class="photo-grid__heart-icon" src="./images/heart_icon.svg" alt="Отметиь как понравившееся.">
+                <label class="photo-grid__checkbox-label">
+                  <input class="photo-grid__checkbox" type="checkbox">
+                  <img class="photo-grid__heart-icon" src="./images/heart_icon.svg" alt="Отметиь как понравившееся.">
+                </label>
               </div>
             </li>
             <li class="photo-grid__item">
               <img class="photo-grid__image" src="./images/karachaevsk.jpg" alt="Древнее строение заросшее травой от старости.">
               <div class="photo-grid__annotation">
-                <p class="photo-grid__title">Карачаевск</p>
-                <img class="photo-grid__heart-icon" src="./images/heart_icon.svg" alt="Отметиь как понравившееся.">
+                <p class="photo-grid__title">Карачаево-Черкесия</p>
+                <label class="photo-grid__checkbox-label">
+                  <input class="photo-grid__checkbox" type="checkbox">
+                  <img class="photo-grid__heart-icon" src="./images/heart_icon.svg" alt="Отметиь как понравившееся.">
+                </label>
               </div>
             </li>
           </ul>
@@ -80,8 +98,20 @@
       </main>
 
       <footer class="footer page__footer">
-        <p class="footer__annotation">&copy; 2021. Mesto Russia</p>
+        <p class="footer__annotation">&copy; 2021 Mesto Russia</p>
       </footer>
+
+      <section class="edit-overlay edit-overlay__visible">
+        <div class="edit-overlay__form">
+          <h2 class="edit-overlay__heading">Редактировать профиль</h2>
+          <input class="edit-overlay__profile-name" type="text" placeholder="Жак-Ив Кусто">
+          <input class="edit-overlay__profile-profession" type="text" placeholder="Исследователь океана">
+          <button class="edit-overlay__submit" type="submit">Сохранить</button>
+          <button class="edit-overlay__close-button" type="reset" tabindex="0">
+            <img class="edit-overlay__close-img" src="./images/close_icon.svg" alt="Закрыть.">
+          </button>
+        </div>
+      </section>
 
     </div>
   </body>

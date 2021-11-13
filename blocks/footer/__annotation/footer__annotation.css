@@ -8,3 +8,9 @@
   padding: 0;
   margin: 0;
 }
+
+@media screen and (min-width: 850px) {
+  .footer__annotation {
+    font-size: 18px;
+  }
+}

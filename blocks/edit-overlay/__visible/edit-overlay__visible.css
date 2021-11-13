@@ -1,0 +1,5 @@
+.edit-overlay__visible {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

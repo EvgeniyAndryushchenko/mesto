@@ -22,9 +22,9 @@ indent_size = 2
 
 # Line ending file format
 
-# Possible values - lf, crlf, cr
+# Possible values - lf, lf, cr
 
-end_of_line = lf
+end_of_line = crlf
 
 # File character encoding
 

@@ -1,0 +1,13 @@
+.photo-grid__checkbox {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+}
+
+.photo-grid__checkbox:checked + .photo-grid__heart-icon {
+  background-image: url(../../../images/heart_icon_active.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+}

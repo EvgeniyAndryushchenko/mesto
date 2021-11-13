@@ -9,3 +9,16 @@
   margin: 0;
   padding: 0;
 }
+@media screen and (min-width: 850px) {
+  .profile__name {
+    text-align: left;
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  .profile__name {
+    font-size: 42px;
+    line-height: 1.5;
+  }
+}
+
