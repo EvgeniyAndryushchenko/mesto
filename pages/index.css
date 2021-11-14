@@ -50,12 +50,12 @@
 
 /* Форма */
 
-@import url(../blocks/edit-overlay/edit-overlay.css);
-@import url(../blocks/edit-overlay/__visible/edit-overlay__visible.css);
-@import url(../blocks/edit-overlay/__form/edit-overlay__form.css);
-@import url(../blocks/edit-overlay/__heading/edit-overlay__heading.css);
-@import url(../blocks/edit-overlay/__profile-name/edit-overlay__profile-name.css);
-@import url(../blocks/edit-overlay/__profile-profession/edit-overlay__profile-profession.css);
-@import url(../blocks/edit-overlay/__submit/edit-overlay__submit.css);
-@import url(../blocks/edit-overlay/__close-button/edit-overlay__close-button.css);
-@import url(../blocks/edit-overlay/__close-img/edit-overlay__close-img.css);
+@import url(../blocks/popup/popup.css);
+@import url(../blocks/popup/_visible/popup_visible.css);
+@import url(../blocks/popup/__form/popup__form.css);
+@import url(../blocks/popup/__heading/popup__heading.css);
+@import url(../blocks/popup/__profile-name/popup__profile-name.css);
+@import url(../blocks/popup/__profile-profession/popup__profile-profession.css);
+@import url(../blocks/popup/__submit/popup__submit.css);
+@import url(../blocks/popup/__close-button/popup__close-button.css);
+@import url(../blocks/popup/__close-img/popup__close-img.css);

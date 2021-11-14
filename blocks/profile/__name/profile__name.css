@@ -8,10 +8,22 @@
   color: #fff;
   margin: 0;
   padding: 0;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  max-width: 230px;
 }
+
+@media screen and (min-width: 560px) {
+  .profile__name {
+    max-width: calc(25vw + 130px);
+  }
+}
+
 @media screen and (min-width: 850px) {
   .profile__name {
     text-align: left;
+    max-width: calc(77vw - 167px - 300px);
   }
 }
 
@@ -22,3 +34,8 @@
   }
 }
 
+@media screen and (min-width: 1280px) {
+  .profile__name {
+    max-width: 530px;
+  }
+}

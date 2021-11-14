@@ -1,4 +1,4 @@
-.edit-overlay__close-button {
+.popup__close-button {
   position: absolute;
   top: -36px;
   right: 0;
@@ -11,14 +11,14 @@
 }
 
 @media screen and (min-width: 620px) {
-  .edit-overlay__close-button {
+  .popup__close-button {
     width: 32px;
     top: -40px;
     right: -40px;
   }
 }
 
-.edit-overlay__close-button:hover {
+.popup__close-button:hover {
   cursor: pointer;
   opacity: .6;
 }

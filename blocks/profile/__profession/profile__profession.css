@@ -9,6 +9,10 @@
   margin-top: 8px;
   margin-bottom: 33px;
   padding: 0;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  max-width: 230px;
 }
 
 @media screen and (min-width: 850px) {
@@ -16,6 +20,7 @@
     text-align: left;
     margin-top: 0;
     margin-bottom: 10px;
+    max-width: calc(77vw - 167px - 300px);
   }
 }
 
@@ -25,3 +30,8 @@
   }
 }
 
+@media screen and (min-width: 1280px) {
+  .profile__profession {
+    max-width: 530px;
+  }
+}

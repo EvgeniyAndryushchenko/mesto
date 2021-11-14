@@ -1,4 +1,4 @@
-.edit-overlay__submit {
+.popup__submit {
   width: 100%;
   background: #000;
   border-radius: 2px;
@@ -15,12 +15,12 @@
 }
 
 @media screen and (min-width: 580px) {
-  .edit-overlay__submit {
+  .popup__submit {
     font-size: 18px;
   }
 }
 
-.edit-overlay__submit:hover {
+.popup__submit:hover {
   cursor: pointer;
   opacity: .8;
 }

@@ -1,4 +1,4 @@
-.edit-overlay__heading {
+.popup__heading {
   margin: 0 0 calc(105px - 15%);
   font-family: Inter, Arial, sans-serif;
   font-style: normal;
@@ -9,7 +9,7 @@
 }
 
 @media screen and (min-width: 580px) {
-  .edit-overlay__heading {
+  .popup__heading {
     font-size: 24px;
     margin-bottom: 42px;
   }
