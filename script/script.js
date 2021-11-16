@@ -1,55 +1,41 @@
-const ESC_KEYCODE = 27;
+const PROFILE = document.querySelector('.profile');
+const NAME_PROFILE = PROFILE.querySelector('.profile__name');
+const JOB_PROFILE = PROFILE.querySelector('.profile__profession');
+const EDIT_BUTTON_PROFILE = PROFILE.querySelector('.profile__edit-button');
 
-let profile = document.querySelector('.profile');
-let nameProfile = profile.querySelector('.profile__name');
-let jobProfile = profile.querySelector('.profile__profession');
-let editButtonProfile = profile.querySelector('.profile__edit-button');
-
-let popup = document.querySelector('.popup');
-let nameInput = popup.querySelector('.popup__profile-name');
-let jobInput = popup.querySelector('.popup__profile-profession');
-let submitButton = popup.querySelector('.popup__submit');
-let closeButton = popup.querySelector('.popup__close-button');
+const POPUP = document.querySelector('.popup');
+const NAME_INPUT = POPUP.querySelector('.popup__input_type_name');
+const JOB_INPUT = POPUP.querySelector('.popup__input_type_profession');
+const SUBMIT_BUTTON = POPUP.querySelector('.popup__button_type_submit');
+const CLOSE_BUTTON = POPUP.querySelector('.popup__button_type_reset');
 
 
-function onEditButtonProfileClick(evt) {
+function openPopup() {
+  POPUP.classList.add('popup_visible');
+}
+
+function closePopup() {
+  POPUP.classList.remove('popup_visible');
+  EDIT_BUTTON_PROFILE.addEventListener('click', handleEditProfile);
+}
+
+function submitPopup() {
+  NAME_PROFILE.textContent = NAME_INPUT.value;
+  JOB_PROFILE.textContent = JOB_INPUT.value;
+
+  closePopup();
+}
+
+function handleEditProfile(evt) {
   evt.preventDefault();
-  let nameProfileTextContent = nameProfile.textContent;
-  let jobProfileTextContent = jobProfile.textContent;
+  NAME_INPUT.value = NAME_PROFILE.textContent;
+  JOB_INPUT.value = JOB_PROFILE.textContent;
 
-  nameInput.value = nameProfileTextContent;
-  jobInput.value = jobProfileTextContent;
+  CLOSE_BUTTON.addEventListener('click', closePopup);
+  SUBMIT_BUTTON.addEventListener('click', submitPopup);
 
-  popup.classList.add('popup_visible');
-  document.addEventListener('keydown', onPressEsc);
-  closeButton.addEventListener('click', onPopupCloseClick);
-  closeButton.addEventListener('keydown', onPopupCloseClick);
-  submitButton.addEventListener('click', onPopupSubmitClick);
+  openPopup()
 }
 
-function onPopupCloseClick() {
-  popup.classList.remove('popup_visible');
-  document.removeEventListener('keydown', onPressEsc);
-  closeButton.removeEventListener('click', onPopupCloseClick);
-  closeButton.removeEventListener('keydown', onPopupCloseClick);
-  editButtonProfile.addEventListener('click', onEditButtonProfileClick);
 
-  nameProfile.textContent = nameProfileTextContent;
-  jobProfile.textContent = jobProfileTextContent;
-}
-
-function onPressEsc(evt) {
-  if (evt.keyCode === ESC_KEYCODE) {
-    onPopupCloseClick();
-  }
-}
-
-function onPopupSubmitClick() {
-  nameProfile.textContent = nameInput.value;
-  jobProfile.textContent = jobInput.value;
-
-  onPopupCloseClick();
-}
-
-editButtonProfile.addEventListener('click', onEditButtonProfileClick);
-
+EDIT_BUTTON_PROFILE.addEventListener('click', handleEditProfile);
