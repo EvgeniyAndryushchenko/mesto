@@ -7,18 +7,21 @@
   justify-content: center;
   background-color: transparent;
   border: 1px solid #fff;
-  padding: 4px;
   box-sizing: border-box;
   width: 18px;
   height: 18px;
   transition: opacity .3s ease-out 0s;
+  background-image: url(../../../images/edit_button.svg);
+  background-size: 41.6%;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 @media screen and (min-width: 1000px) {
   .profile__edit-button {
     width: 22px;
     height: 22px;
-    padding: 5px;
+    background-size: 45.5%;
     top: 24px;
     right: -42px;
   }

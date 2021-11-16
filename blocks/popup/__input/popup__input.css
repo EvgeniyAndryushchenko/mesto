@@ -1,10 +1,4 @@
-.popup__profile-name {
-  font-family: Inter;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 14px;
-  line-height: 1.2;
-  margin: 0 0 24px;
+.popup__input {
   padding-top: 8px;
   padding-bottom: 8px;
   border-top: none;

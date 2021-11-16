@@ -1,0 +1,28 @@
+.popup__button_type_reset {
+  position: absolute;
+  top: -36px;
+  right: 0;
+  width: 20px;
+  height: 20px;
+  padding: 0;
+  background-color: transparent;
+  background-image: url(../../../../images/close_icon.svg);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  transition: opacity .3s ease-out 0s;
+}
+
+.popup__button_type_reset:hover {
+  cursor: pointer;
+  opacity: .6;
+}
+
+@media screen and (min-width: 620px) {
+  .popup__button_type_reset {
+    width: 32px;
+    height: 32px;
+    top: -40px;
+    right: -40px;
+  }
+}
