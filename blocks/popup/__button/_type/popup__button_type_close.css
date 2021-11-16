@@ -1,4 +1,4 @@
-.popup__button_type_reset {
+.popup__button_type_close {
   position: absolute;
   top: -36px;
   right: 0;
@@ -13,13 +13,13 @@
   transition: opacity .3s ease-out 0s;
 }
 
-.popup__button_type_reset:hover {
+.popup__button_type_close:hover {
   cursor: pointer;
   opacity: .6;
 }
 
 @media screen and (min-width: 620px) {
-  .popup__button_type_reset {
+  .popup__button_type_close {
     width: 32px;
     height: 32px;
     top: -40px;

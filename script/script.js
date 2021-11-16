@@ -7,7 +7,7 @@ const POPUP = document.querySelector('.popup');
 const NAME_INPUT = POPUP.querySelector('.popup__input_type_name');
 const JOB_INPUT = POPUP.querySelector('.popup__input_type_profession');
 const SUBMIT_BUTTON = POPUP.querySelector('.popup__button_type_submit');
-const CLOSE_BUTTON = POPUP.querySelector('.popup__button_type_reset');
+const CLOSE_BUTTON = POPUP.querySelector('.popup__button_type_close');
 
 
 function openPopup() {
