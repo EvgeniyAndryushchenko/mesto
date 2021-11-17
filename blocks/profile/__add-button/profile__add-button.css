@@ -10,6 +10,15 @@
   border-radius: 2px;
   transition: opacity .3s ease-out 0s;
   flex-shrink: 0;
+  background-image: url(../../../images/add_button.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 16px;
+}
+
+.profile__add-button:hover {
+  cursor: pointer;
+  opacity: .6;
 }
 
 @media screen and (min-width: 850px) {
@@ -17,10 +26,6 @@
     width: 150px;
     justify-self: flex-end;
     margin-left: auto;
+    background-size: 22px;
   }
-}
-
-.profile__add-button:hover {
-  cursor: pointer;
-  opacity: .6;
 }
