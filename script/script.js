@@ -19,15 +19,15 @@ function closePopup() {
   editButtonProfile.addEventListener('click', handleEditProfile);
 }
 
-function submitPopup() {
+function submitPopup(evt) {
+  evt.preventDefault();
   nameProfile.textContent = nameInput.value;
   jobProfile.textContent = jobInput.value;
 
   closePopup();
 }
 
-function handleEditProfile(evt) {
-  evt.preventDefault();
+function handleEditProfile() {
   nameInput.value = nameProfile.textContent;
   jobInput.value = jobProfile.textContent;
 
