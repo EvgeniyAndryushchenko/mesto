@@ -15,6 +15,25 @@ function openPopup() {
   popup.classList.add('popup_visible');
 }
 
+function createPopup(heading, name, profession) {
+  const templatePopup = document.querySelector('#template-popup').content;
+  const popup = templatePopup.querySelector('.popup').cloneNode(true);
+  popup.querySelector('.popup__heading').textContent = heading;
+  popup.querySelector('.popup__input_type_name').placeholder = name;
+  popup.querySelector('.popup__input_type_profession').placeholder = profession;
+
+
+  popup.classList.add('popup_visible');
+  return popup;
+}
+
+document.querySelector('.page').append(createPopup("Редактировать профиль", "Жак-Ив", "Исследователь"));
+
+//let createListPhoto = initialCards.map(function (item) {
+//  return createPhotoElement(item);
+//});
+
+
 function closePopup() {
   popup.classList.remove('popup_visible');
   editButtonProfile.addEventListener('click', handleEditProfile);
@@ -73,15 +92,19 @@ const initialCards = [
 
 const photoContainer = document.querySelector('.photo-grid__items');
 
-function createPhotoElement(...placeName, ...photoLink) {
+function createPhotoElement(item) {
   const templatePhoto = document.querySelector('#template-photo').content;
   const photoItem = templatePhoto.querySelector('.photo-grid__item').cloneNode(true);
-  photoItem.querySelector('.photo-grid__title').textContent = placeName;
-  photoItem.querySelector('.photo-grid__image').src = photoLink;
-  photoItem.querySelector('.photo-grid__image').alt = placeName;
+  photoItem.querySelector('.photo-grid__title').textContent = item.name;
+  photoItem.querySelector('.photo-grid__image').src = item.link;
+  photoItem.querySelector('.photo-grid__image').alt = item.name;
 
-  photoContainer.append(photoItem);
+  return photoItem;
 }
 
-createPhotoElement(...initialCards.name, ...initialCards.link);
-createPhotoElement(initialCards[1].name, initialCards[1].link);
+let createListPhoto = initialCards.map(function (item) {
+  return createPhotoElement(item);
+});
+
+photoContainer.append(...createListPhoto);
+
