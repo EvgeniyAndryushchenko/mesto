@@ -51,13 +51,30 @@ const initialCards = [
   }
 ];
 
+// Удалить старые фото из разметки
+
+const oldPhoto = photoContainer.querySelectorAll('.photo-grid__item');
+
+oldPhoto.forEach((item) => {
+  item.classList.add('hidden');
+});
+
+// Создать новые фото
 
 function createPhotoElement(item) {
   const templatePhoto = document.querySelector('#template-photo').content;
   const photoItem = templatePhoto.querySelector('.photo-grid__item').cloneNode(true);
   photoItem.querySelector('.photo-grid__title').textContent = item.name;
   photoItem.querySelector('.photo-grid__image').src = item.link;
-  photoItem.querySelector('.photo-grid__image').alt = item.name;
+  photoItem.querySelector('.photo-grid__image').alt = item.name + '.';
+
+  const handle = photoItem.querySelector('.photo-grid__input_type_checkbox');
+  const like = photoItem.querySelector('.photo-grid__heart-icon');
+  function handleLike() {
+    like.classList.toggle('photo-grid__heart-icon_checked');
+  }
+
+  handle.addEventListener('click', handleLike);
 
   return photoItem;
 }
@@ -66,11 +83,14 @@ let createListPhoto = initialCards.map(function (item) {
   return createPhotoElement(item);
 });
 
+// Открыть попап
+
 function openPopup(selectorPopupClass) {
   const popup = document.querySelector(selectorPopupClass);
   popup.classList.add('popup_visible');
 }
 
+// Создать попап
 
 function createPopup(item) {
   const templateObject = document.querySelector('#template-popup').content;
@@ -126,6 +146,8 @@ let createListPopups = initialPopups.map(function (item) {
   return createPopup(item);
 });
 
+// Функции слушателей для разных кнопок
+
 function handleButtonEdit() {
   const selectorPopupClass = '.' + initialPopups[0].popupClass;
 
@@ -138,8 +160,14 @@ function handleButtonAdd() {
   openPopup(selectorPopupClass);
 }
 
+// Создать фото и попапы
+
 photoContainer.append(...createListPhoto);
 document.querySelector('.content').append(...createListPopups);
 
+// Назначить слушатели на кнопки
+
 editButtonProfile.addEventListener('click', handleButtonEdit);
 addButtonProfile.addEventListener('click', handleButtonAdd);
+
+

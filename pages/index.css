@@ -4,6 +4,7 @@
 @import url(../fonts/fonts.css);
 @import url(../blocks/body/body.css);
 @import url(../blocks/page/page.css);
+@import url(../blocks/hidden/hidden.css);
 
 /* Шапка сайта */
 
@@ -42,6 +43,7 @@
 @import url(../blocks/photo-grid/__input/photo-grid__input.css);
 @import url(../blocks/photo-grid/__input/_type/photo-grid__input_type_checkbox.css);
 @import url(../blocks/photo-grid/__heart-icon/photo-grid__heart-icon.css);
+@import url(../blocks/photo-grid/__heart-icon/_checked/photo-grid__heart-icon_checked.css);
 
 /* Подвал */
 
