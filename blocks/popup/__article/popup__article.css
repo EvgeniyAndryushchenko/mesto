@@ -1,0 +1,6 @@
+.popup__article {
+  position: relative;
+  display: flex;
+  flex-direction: column-reverse;
+}
+

@@ -56,7 +56,7 @@ const initialCards = [
 const oldPhoto = photoContainer.querySelectorAll('.photo-grid__item');
 
 oldPhoto.forEach((item) => {
-  item.classList.add('hidden');
+  item.remove();
 });
 
 // Создать новые фото
@@ -64,17 +64,47 @@ oldPhoto.forEach((item) => {
 function createPhotoElement(item) {
   const templatePhoto = document.querySelector('#template-photo').content;
   const photoItem = templatePhoto.querySelector('.photo-grid__item').cloneNode(true);
-  photoItem.querySelector('.photo-grid__title').textContent = item.name;
-  photoItem.querySelector('.photo-grid__image').src = item.link;
-  photoItem.querySelector('.photo-grid__image').alt = item.name + '.';
-
+  const photoImg = photoItem.querySelector('.photo-grid__image');
   const handle = photoItem.querySelector('.photo-grid__input_type_checkbox');
   const like = photoItem.querySelector('.photo-grid__heart-icon');
+  const deleteButton = photoItem.querySelector('.photo-grid__remove');
+
+  photoItem.querySelector('.photo-grid__title').textContent = item.name;
+  photoImg.src = item.link;
+  photoImg.alt = item.name + '.';
+
   function handleLike() {
     like.classList.toggle('photo-grid__heart-icon_checked');
   }
 
+  function deletePhoto() {
+    photoItem.remove();
+  }
+
+  function openPhotoElement(item) {
+    const templatePopupPhoto = document.querySelector('#template-open-photo').content;
+    const photoPopupItem = templatePopupPhoto.querySelector('.popup').cloneNode(true);
+    const photoPopupImg = photoPopupItem.querySelector('.popup__image');
+    const closePopupButton = photoPopupItem.querySelector('.popup__button_type_close');
+
+    photoPopupItem.querySelector('.popup__open-heading').textContent = item.name;
+    photoPopupImg.src = item.link;
+    photoPopupImg.alt = item.name + '.';
+
+    function handlePhotoPopup() {
+      photoPopupItem.classList.toggle('hidden');
+    }
+
+    closePopupButton.addEventListener('click', handlePhotoPopup);
+    photoImg.addEventListener('click', handlePhotoPopup);
+
+    return photoPopupItem;
+  }
+
+  document.querySelector('.page').append(openPhotoElement(item));
+
   handle.addEventListener('click', handleLike);
+  deleteButton.addEventListener('click', deletePhoto);
 
   return photoItem;
 }
@@ -87,7 +117,7 @@ let createListPhoto = initialCards.map(function (item) {
 
 function openPopup(selectorPopupClass) {
   const popup = document.querySelector(selectorPopupClass);
-  popup.classList.add('popup_visible');
+  popup.classList.remove('hidden');
 }
 
 // Создать попап
@@ -114,7 +144,7 @@ function createPopup(item) {
   }
 
   function closePopup() {
-    templatePopup.classList.remove('popup_visible');
+    templatePopup.classList.add('hidden');
   }
 
   closeButton.addEventListener('click', closePopup);
@@ -163,11 +193,10 @@ function handleButtonAdd() {
 // Создать фото и попапы
 
 photoContainer.append(...createListPhoto);
-document.querySelector('.content').append(...createListPopups);
+document.querySelector('.page').append(...createListPopups);
 
 // Назначить слушатели на кнопки
 
 editButtonProfile.addEventListener('click', handleButtonEdit);
 addButtonProfile.addEventListener('click', handleButtonAdd);
-
 

@@ -36,9 +36,10 @@
                   <h3 class="photo-grid__title">Карачаевск</h3>
                   <label class="photo-grid__checkbox-label">
                     <input class="photo-grid__input photo-grid__input_type_checkbox" type="checkbox">
-                    <img class="photo-grid__heart-icon" src="./images/heart_icon.svg" alt="Отметиь как понравившееся.">
+                    <img class="photo-grid__heart-icon" src="./images/heart_icon.svg" alt="Отметить как понравившееся.">
                   </label>
                 </div>
+                <button class="photo-grid__remove" aria-label="Удалить."></button>
               </article>
             </li>
             <li class="photo-grid__item">
@@ -48,9 +49,10 @@
                   <h3 class="photo-grid__title">Гора Эльбрус</h3>
                   <label class="photo-grid__checkbox-label">
                     <input class="photo-grid__input photo-grid__input_type_checkbox" type="checkbox">
-                    <img class="photo-grid__heart-icon" src="./images/heart_icon.svg" alt="Отметиь как понравившееся.">
+                    <img class="photo-grid__heart-icon" src="./images/heart_icon.svg" alt="Отметить как понравившееся.">
                   </label>
                 </div>
+                <button class="photo-grid__remove" aria-label="Удалить."></button>
               </article>
             </li>
             <li class="photo-grid__item">
@@ -60,9 +62,10 @@
                   <h3 class="photo-grid__title">Домбай</h3>
                   <label class="photo-grid__checkbox-label">
                     <input class="photo-grid__input photo-grid__input_type_checkbox" type="checkbox">
-                    <img class="photo-grid__heart-icon" src="./images/heart_icon.svg" alt="Отметиь как понравившееся.">
+                    <img class="photo-grid__heart-icon" src="./images/heart_icon.svg" alt="Отметить как понравившееся.">
                   </label>
                 </div>
+                <button class="photo-grid__remove" aria-label="Удалить."></button>
               </article>
             </li>
             <li class="photo-grid__item">
@@ -72,9 +75,10 @@
                   <h3 class="photo-grid__title">Гора Эльбрус</h3>
                   <label class="photo-grid__checkbox-label">
                     <input class="photo-grid__input photo-grid__input_type_checkbox" type="checkbox">
-                    <img class="photo-grid__heart-icon" src="./images/heart_icon.svg" alt="Отметиь как понравившееся.">
+                    <img class="photo-grid__heart-icon" src="./images/heart_icon.svg" alt="Отметить как понравившееся.">
                   </label>
                 </div>
+                <button class="photo-grid__remove" aria-label="Удалить."></button>
               </article>
             </li>
             <li class="photo-grid__item">
@@ -84,9 +88,10 @@
                   <h3 class="photo-grid__title">Домбай</h3>
                   <label class="photo-grid__checkbox-label">
                     <input class="photo-grid__input photo-grid__input_type_checkbox" type="checkbox">
-                    <img class="photo-grid__heart-icon" src="./images/heart_icon.svg" alt="Отметиь как понравившееся.">
+                    <img class="photo-grid__heart-icon" src="./images/heart_icon.svg" alt="Отметить как понравившееся.">
                   </label>
                 </div>
+                <button class="photo-grid__remove" aria-label="Удалить."></button>
               </article>
             </li>
             <li class="photo-grid__item">
@@ -96,9 +101,10 @@
                   <h3 class="photo-grid__title">Карачаево-Черкесия</h3>
                   <label class="photo-grid__checkbox-label">
                     <input class="photo-grid__input photo-grid__input_type_checkbox" type="checkbox">
-                    <img class="photo-grid__heart-icon" src="./images/heart_icon.svg" alt="Отметиь как понравившееся.">
+                    <img class="photo-grid__heart-icon" src="./images/heart_icon.svg" alt="Отметить как понравившееся.">
                   </label>
                 </div>
+                <button class="photo-grid__remove" aria-label="Удалить."></button>
               </article>
             </li>
           </ul>
@@ -110,29 +116,8 @@
         <p class="footer__annotation">&copy; 2021 Mesto Russia</p>
       </footer>
 
-      <!-- <section class="popup">
-        <form class="popup__form">
-          <h2 class="popup__heading">Редактировать профиль</h2>
-          <input class="popup__input popup__input_type_name" type="text" placeholder="Жак-Ив Кусто">
-          <input class="popup__input popup__input_type_profession" type="text" placeholder="Исследователь океана">
-          <button class="popup__button popup__button_type_submit" type="submit">Сохранить</button>
-          <button class="popup__button popup__button_type_close" type="reset" name="close"></button>
-        </form>
-      </section>
-
-
-      <section class="popup">
-        <form class="popup__form">
-          <h2 class="popup__heading">Новое место</h2>
-          <input class="popup__input popup__input_type_name" type="text" placeholder="Название">
-          <input class="popup__input popup__input_type_link" type="text" placeholder="Ссылка на картинку">
-          <button class="popup__button popup__button_type_submit" type="submit">Сохранить</button>
-          <button class="popup__button popup__button_type_close" type="reset" name="close"></button>
-        </form>
-      </section> -->
-
-      <template id="template-popup">
-        <section class="popup">
+      <template class="template-popup" id="template-popup">
+        <section class="popup hidden">
           <form class="popup__form">
             <h2 class="popup__heading"></h2>
             <input class="popup__input popup__input_type_name" type="text" placeholder="">
@@ -143,7 +128,6 @@
         </section>
       </template>
 
-
       <template class="template-photo" id="template-photo">
         <li class="photo-grid__item">
           <article class="photo-grid__article">
@@ -152,11 +136,22 @@
               <h3 class="photo-grid__title"></h3>
               <label class="photo-grid__checkbox-label">
                 <input class="photo-grid__input photo-grid__input_type_checkbox" type="checkbox">
-                <img class="photo-grid__heart-icon" src="./images/heart_icon.svg" alt="Отметиь как понравившееся.">
+                <img class="photo-grid__heart-icon" src="./images/heart_icon.svg" alt="Отметить как понравившееся.">
               </label>
             </div>
+            <button class="photo-grid__remove" aria-label="Удалить."></button>
           </article>
         </li>
+      </template>
+
+      <template class="template-open-photo" id="template-open-photo">
+        <section class="popup hidden">
+          <article class="popup__article">
+            <h2 class="popup__open-heading"></h2>
+            <img class="popup__image" src="#" alt="">
+            <button class="popup__button popup__button_type_close" type="reset" name="close"></button>
+          </article>
+        </section>
       </template>
 
       <script src="./script/script.js"></script>
