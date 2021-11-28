@@ -161,7 +161,7 @@ function createPopup(item) {
         const newCard = {};
         newCard.name = nameInput.value;
         newCard.link = additionInput.value;
-        photoContainer.append(createPhotoElement(newCard));
+        photoContainer.prepend(createPhotoElement(newCard));
         nameInput.value = '';
         additionInput.value = '';
       }
