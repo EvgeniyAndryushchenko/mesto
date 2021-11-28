@@ -44,6 +44,7 @@
 @import url(../blocks/photo-grid/__input/_type/photo-grid__input_type_checkbox.css);
 @import url(../blocks/photo-grid/__heart-icon/photo-grid__heart-icon.css);
 @import url(../blocks/photo-grid/__heart-icon/_checked/photo-grid__heart-icon_checked.css);
+@import url(../blocks/photo-grid/__remove/photo-grid__remove.css);
 
 /* Подвал */
 
@@ -54,7 +55,6 @@
 /* Форма */
 
 @import url(../blocks/popup/popup.css);
-@import url(../blocks/popup/_visible/popup_visible.css);
 @import url(../blocks/popup/__form/popup__form.css);
 @import url(../blocks/popup/__heading/popup__heading.css);
 @import url(../blocks/popup/__input/popup__input.css);
@@ -65,3 +65,7 @@
 @import url(../blocks/popup/__button/_type/popup__button_type_submit.css);
 @import url(../blocks/popup/__button/_type/popup__button_type_close.css);
 @import url(../blocks/popup/__close-img/popup__close-img.css);
+@import url(../blocks/hidden/hidden.css);
+@import url(../blocks/popup/__article/popup__article.css);
+@import url(../blocks/popup/__image/popup__image.css);
+@import url(../blocks/popup/__open-heading/popup__open-heading.css);

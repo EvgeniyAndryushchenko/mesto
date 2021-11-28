@@ -1,6 +1,8 @@
 .photo-grid__article {
+  position: relative;
   background-color: #fff;
   display: grid;
   grid-template-rows: 282px 75px;
   grid-template-columns: minmax(250px, 100%);
 }
+
