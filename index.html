@@ -29,84 +29,6 @@
 
         <section class="photo-grid content__photo-grid">
           <ul class="photo-grid__items">
-            <li class="photo-grid__item">
-              <article class="photo-grid__article">
-                <img class="photo-grid__image" src="./images/karachaevsk.jpg" alt="Древнее строение заросшее травой от старости.">
-                <div class="photo-grid__annotation">
-                  <h3 class="photo-grid__title">Карачаевск</h3>
-                  <label class="photo-grid__checkbox-label">
-                    <input class="photo-grid__input photo-grid__input_type_checkbox" type="checkbox">
-                    <img class="photo-grid__heart-icon" src="./images/heart_icon.svg" alt="Отметить как понравившееся.">
-                  </label>
-                </div>
-                <button class="photo-grid__remove" aria-label="Удалить."></button>
-              </article>
-            </li>
-            <li class="photo-grid__item">
-              <article class="photo-grid__article">
-                <img class="photo-grid__image" src="./images/elbrus-mountain.jpg" alt="В лучах заходящего солнца, виднеется гора Эльбрус.">
-                <div class="photo-grid__annotation">
-                  <h3 class="photo-grid__title">Гора Эльбрус</h3>
-                  <label class="photo-grid__checkbox-label">
-                    <input class="photo-grid__input photo-grid__input_type_checkbox" type="checkbox">
-                    <img class="photo-grid__heart-icon" src="./images/heart_icon.svg" alt="Отметить как понравившееся.">
-                  </label>
-                </div>
-                <button class="photo-grid__remove" aria-label="Удалить."></button>
-              </article>
-            </li>
-            <li class="photo-grid__item">
-              <article class="photo-grid__article">
-                <img class="photo-grid__image" src="./images/dombai.jpg" alt="Острый скалистый пик возвышается над холмами поросшими лесом.">
-                <div class="photo-grid__annotation">
-                  <h3 class="photo-grid__title">Домбай</h3>
-                  <label class="photo-grid__checkbox-label">
-                    <input class="photo-grid__input photo-grid__input_type_checkbox" type="checkbox">
-                    <img class="photo-grid__heart-icon" src="./images/heart_icon.svg" alt="Отметить как понравившееся.">
-                  </label>
-                </div>
-                <button class="photo-grid__remove" aria-label="Удалить."></button>
-              </article>
-            </li>
-            <li class="photo-grid__item">
-              <article class="photo-grid__article">
-                <img class="photo-grid__image" src="./images/elbrus-mountain.jpg" alt="В лучах заходящего солнца, виднеется гора Эльбрус.">
-                <div class="photo-grid__annotation">
-                  <h3 class="photo-grid__title">Гора Эльбрус</h3>
-                  <label class="photo-grid__checkbox-label">
-                    <input class="photo-grid__input photo-grid__input_type_checkbox" type="checkbox">
-                    <img class="photo-grid__heart-icon" src="./images/heart_icon.svg" alt="Отметить как понравившееся.">
-                  </label>
-                </div>
-                <button class="photo-grid__remove" aria-label="Удалить."></button>
-              </article>
-            </li>
-            <li class="photo-grid__item">
-              <article class="photo-grid__article">
-                <img class="photo-grid__image" src="./images/dombai.jpg" alt="Острый скалистый пик возвышается над холмами поросшими лесом.">
-                <div class="photo-grid__annotation">
-                  <h3 class="photo-grid__title">Домбай</h3>
-                  <label class="photo-grid__checkbox-label">
-                    <input class="photo-grid__input photo-grid__input_type_checkbox" type="checkbox">
-                    <img class="photo-grid__heart-icon" src="./images/heart_icon.svg" alt="Отметить как понравившееся.">
-                  </label>
-                </div>
-                <button class="photo-grid__remove" aria-label="Удалить."></button>
-              </article>
-            </li>
-            <li class="photo-grid__item">
-              <article class="photo-grid__article">
-                <img class="photo-grid__image" src="./images/karachaevsk.jpg" alt="Древнее строение заросшее травой от старости.">
-                <div class="photo-grid__annotation">
-                  <h3 class="photo-grid__title">Карачаево-Черкесия</h3>
-                  <label class="photo-grid__checkbox-label">
-                    <input class="photo-grid__input photo-grid__input_type_checkbox" type="checkbox">
-                    <img class="photo-grid__heart-icon" src="./images/heart_icon.svg" alt="Отметить как понравившееся.">
-                  </label>
-                </div>
-                <button class="photo-grid__remove" aria-label="Удалить."></button>
-              </article>
-            </li>
           </ul>
         </section>
 
@@ -115,6 +37,34 @@
       <footer class="footer page__footer">
         <p class="footer__annotation">&copy; 2021 Mesto Russia</p>
       </footer>
+
+      <section class="popup hidden popup-profile">
+        <form class="popup__form">
+          <h2 class="popup__heading">Редактировать профиль</h2>
+          <input class="popup__input popup__input_type_name" type="text" placeholder="Жак-Ив Кусто" id="popup__input_type_name">
+          <input class="popup__input popup__input_type_addition" type="text" placeholder="Исследователь океана" id="popup__input_type_profession">
+          <button class="popup__button popup__button_type_submit" type="submit">Сохранить</button>
+          <button class="popup__button popup__button_type_close" type="reset" name="close"></button>
+        </form>
+      </section>
+
+      <section class="popup hidden popup-picture">
+        <form class="popup__form">
+          <h2 class="popup__heading">Новое место</h2>
+          <input class="popup__input popup__input_type_name" type="text" placeholder="Название" id="popup__input_type_heading">
+          <input class="popup__input popup__input_type_addition" type="text" placeholder="Ссылка на картинку" id="popup__input_type_link">
+          <button class="popup__button popup__button_type_submit" type="submit">Сохранить</button>
+          <button class="popup__button popup__button_type_close" type="reset" name="close"></button>
+        </form>
+      </section>
+
+      <section class="popup hidden popup-preview">
+        <article class="popup__article">
+          <h2 class="popup__open-heading"></h2>
+          <img class="popup__image" src="#" alt="">
+          <button class="popup__button popup__button_type_close" type="reset" name="close"></button>
+        </article>
+      </section>
 
       <template class="template-popup" id="template-popup">
         <section class="popup hidden">
