@@ -41,8 +41,10 @@
       <section class="popup hidden popup-profile">
         <form class="popup__form">
           <h2 class="popup__heading">Редактировать профиль</h2>
-          <input class="popup__input popup__input_type_name" type="text" placeholder="Жак-Ив Кусто" id="popup__input_type_name">
-          <input class="popup__input popup__input_type_addition" type="text" placeholder="Исследователь океана" id="popup__input_type_profession">
+          <input class="popup__input popup__input_type_name" type="text" placeholder="Жак-Ив Кусто" id="popup__input_type_name" minlength="2" maxlength="40" required>
+          <span class="popup__input-error popup__input_type_name-error"></span>
+          <input class="popup__input popup__input_type_addition" type="text" placeholder="Исследователь океана" id="popup__input_type_profession" minlength="2" maxlength="200" required>
+          <span class="popup__input-error popup__input_type_profession-error"></span>
           <button class="popup__button popup__button_type_submit" type="submit">Сохранить</button>
           <button class="popup__button popup__button_type_close" type="reset" name="close"></button>
         </form>
@@ -51,9 +53,11 @@
       <section class="popup hidden popup-picture">
         <form class="popup__form">
           <h2 class="popup__heading">Новое место</h2>
-          <input class="popup__input popup__input_type_name" type="text" placeholder="Название" id="popup__input_type_heading">
-          <input class="popup__input popup__input_type_addition" type="text" placeholder="Ссылка на картинку" id="popup__input_type_link">
-          <button class="popup__button popup__button_type_submit" type="submit">Сохранить</button>
+          <input class="popup__input popup__input_type_name" type="text" placeholder="Название" id="popup__input_type_heading" minlength="2" maxlength="30" required>
+          <span class="popup__input-error popup__input_type_heading-error"></span>
+          <input class="popup__input popup__input_type_addition" type="url" placeholder="Ссылка на картинку" id="popup__input_type_link" required>
+          <span class="popup__input-error popup__input_type_link-error"></span>
+          <button class="popup__button popup__button_type_submit" type="submit">Создать</button>
           <button class="popup__button popup__button_type_close" type="reset" name="close"></button>
         </form>
       </section>

@@ -170,3 +170,177 @@ formPicture.addEventListener('submit', (evt) => {
 
   closePopupPicture();
 });
+
+
+
+
+
+
+// 6 Спринт
+
+const submitButtonProfile = popupProfile.querySelector('.popup__button_type_submit');
+
+const submitButtonPicture = popupPicture.querySelector('.popup__button_type_submit');
+
+
+const showInputError = (formElement, inputElement, errorMessage) => {
+  inputElement.addEventListener('input', function (evt) {
+    evt.preventDefault();
+  });
+  const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
+  inputElement.classList.add('popup__input_type_error');
+  errorElement.textContent = errorMessage;
+  errorElement.classList.add('popup__input-error_active');
+  const closeButtonElement = formElement.querySelector('.popup__button_type_close');
+  closeButtonElement.addEventListener('click', (evt) => {
+    hideInputError(formElement, inputElement);
+  });
+}
+
+const hideInputError = (formElement, inputElement) => {
+  const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
+  inputElement.classList.remove('popup__input_type_error');
+  errorElement.classList.remove('popup__input-error_active');
+  errorElement.textContent = '';
+}
+
+const checkInputValidity = (formElement, inputElement) => {
+  if (!inputElement.validity.valid) {
+    showInputError(formElement, inputElement, inputElement.validationMessage);
+  } else {
+    hideInputError(formElement, inputElement);
+  }
+}
+
+const hasInvalidInput = (inputList) => {
+  return inputList.some((inputElement) => {
+    return !inputElement.validity.valid;
+    });
+}
+
+const toggleButtonState = (inputList, buttonElement) => {
+  if (hasInvalidInput(inputList)) {
+    buttonElement.classList.add('popup__button_inactive');
+    buttonElement.disabled = true;
+  } else {
+    buttonElement.classList.remove('popup__button_inactive');
+    buttonElement.disabled = false;
+  }
+}
+
+const setEventListeners = (formElement) => {
+  const inputList = Array.from(formElement.querySelectorAll('.popup__input'));
+  const buttonElement = formElement.querySelector('.popup__button_type_submit');
+  toggleButtonState(inputList, buttonElement);
+
+  inputList.forEach((inputElement) => {
+    inputElement.addEventListener('input', () => {
+      checkInputValidity(formElement, inputElement);
+      toggleButtonState(inputList, buttonElement);
+    });
+  });
+}
+
+function enableValidation() {
+  const formList = Array.from(document.querySelectorAll('.popup__form'));
+  formList.forEach((formElement) => {
+    formElement.addEventListener('submit', function (evt) {
+      evt.preventDefault();
+    });
+    // const fieldsetList = Array.from(formElement.querySelectorAll('.form__set'));
+    // fieldsetList.forEach((fieldsetElement) => setEventListeners(fieldsetElement));
+    setEventListeners(formElement);
+  });
+}
+
+enableValidation();
+
+// const showError = (input, errorMessage) => {
+//   input.classList.add('form__input_type_error');
+//   input.textContent = errorMessage;
+//   console.log(input.textContent);
+//   console.dir(input);
+//   // formError.classList.add('form__input-error_active');
+// };
+
+
+
+// const hideError = (input) => {
+//   input.classList.remove('form__input_type_error');
+//   // formError.classList.remove('form__input-error_active');
+//   input.textContent = '';
+//   console.log(input.textContent);
+//   // 1. Удалите активный класс ошибки c formError.
+//   // 2. Очистите свойство textContent элемента formError.
+// };
+
+// const checkInputValidityProfileName = () => {
+//   if (!nameInputProfile.validity.valid) {
+//     showError(nameInputProfile, nameInputProfile.validationMessage);
+//     submitButtonProfile.disabled = true;
+//   } else {
+//     hideError(nameInputProfile);
+//     submitButtonProfile.disabled = false;
+//   }
+// };
+
+// const checkInputValidityProfileAdd = () => {
+//   if (!additionInputProfile.validity.valid) {
+//     showError(additionInputProfile, additionInputProfile.validationMessage);
+//     submitButtonProfile.disabled = true;
+//   } else {
+//     hideError(additionInputProfile);
+//     submitButtonProfile.disabled = false;
+//   }
+// };
+
+// const checkInputValidityPictureName = () => {
+//   if (!nameInputPicture.validity.valid) {
+//     showError(nameInputPicture, nameInputPicture.validationMessage);
+//     submitButtonPicture.disabled = true;
+//   } else {
+//     hideError(nameInputPicture);
+//     submitButtonPicture.disabled = false;
+//   }
+// };
+
+// const checkInputValidityPictureAdd = () => {
+//   if (!additionInputPicture.validity.valid) {
+//     showError(additionInputPicture, additionInputPicture.validationMessage);
+//     submitButtonPicture.disabled = true;
+//   } else {
+//     hideError(additionInputPicture);
+//     submitButtonPicture.disabled = false;
+//   }
+// };
+
+// // formElement.addEventListener('submit', function (evt) {
+// //   evt.preventDefault();
+// // });
+
+// nameInputProfile.addEventListener('input', function () {
+//   checkInputValidityProfileName();
+// });
+
+// additionInputProfile.addEventListener('input', function () {
+//   checkInputValidityProfileAdd();
+// });
+
+// checkInputValidityPictureName();
+// checkInputValidityPictureAdd();
+
+// nameInputPicture.addEventListener('input', function () {
+//   checkInputValidityPictureName();
+// });
+
+// additionInputPicture.addEventListener('input', function () {
+//   checkInputValidityPictureAdd();
+// });
+
+
+
+
+
+
+
+

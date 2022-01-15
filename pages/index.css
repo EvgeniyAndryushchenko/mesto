@@ -4,7 +4,6 @@
 @import url(../fonts/fonts.css);
 @import url(../blocks/body/body.css);
 @import url(../blocks/page/page.css);
-@import url(../blocks/hidden/hidden.css);
 
 /* Шапка сайта */
 
@@ -61,11 +60,15 @@
 @import url(../blocks/popup/__input/_type/popup__input_type_name.css);
 @import url(../blocks/popup/__input/_type/popup__input_type_profession.css);
 @import url(../blocks/popup/__input/_type/popup__input_type_link.css);
+@import url(../blocks/popup/__input/_type/popup__input_type_error.css);
+@import url(../blocks/popup/__input-error/popup__input-error.css);
+@import url(../blocks/popup/__input-error/_active/popup__input-error_active.css);
 @import url(../blocks/popup/__button/popup__button.css);
 @import url(../blocks/popup/__button/_type/popup__button_type_submit.css);
 @import url(../blocks/popup/__button/_type/popup__button_type_close.css);
+@import url(../blocks/popup/__button/_inactive/popup__button_inactive.css);
 @import url(../blocks/popup/__close-img/popup__close-img.css);
-@import url(../blocks/hidden/hidden.css);
 @import url(../blocks/popup/__article/popup__article.css);
 @import url(../blocks/popup/__image/popup__image.css);
 @import url(../blocks/popup/__open-heading/popup__open-heading.css);
+@import url(../blocks/hidden/hidden.css);

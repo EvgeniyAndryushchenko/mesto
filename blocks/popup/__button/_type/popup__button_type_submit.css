@@ -2,6 +2,7 @@
   width: 100%;
   background-color: #000;
   border-radius: 2px;
+  box-sizing: border-box;
   font-family: Inter, Arial, sans-serif;
   font-style: normal;
   font-weight: normal;
@@ -11,6 +12,7 @@
   color: #fff;
   padding: 14px 0;
   transition: opacity .3s ease-out 0s;
+  margin: 28px 0 0;
 }
 
 .popup__button_type_submit:hover {
