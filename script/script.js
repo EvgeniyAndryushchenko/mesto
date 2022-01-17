@@ -1,65 +1,100 @@
 const profile = document.querySelector('.profile');
-const nameProfile = profile.querySelector('.profile__name');
-const jobProfile = profile.querySelector('.profile__profession');
-const editButtonProfile = profile.querySelector('.profile__edit-button');
-const addButtonProfile = profile.querySelector('.profile__add-button');
+const profileName = profile.querySelector('.profile__name');
+const profileJob = profile.querySelector('.profile__profession');
+const profileEditButton = profile.querySelector('.profile__edit-button');
+const profileAddButton = profile.querySelector('.profile__add-button');
 
 const photoContainer = document.querySelector('.photo-grid__items');
 const photoImg = photoContainer.querySelector('.photo-grid__image');
 
 const popupPicture = document.querySelector('.popup-picture');
-const closeButtonPicture = popupPicture.querySelector('.popup__button_type_close');
-const nameInputPicture = popupPicture.querySelector('.popup__input_type_name');
-const additionInputPicture = popupPicture.querySelector('.popup__input_type_addition');
+const pictureCloseButton = popupPicture.querySelector('.popup__button_type_close');
+const pictureNameInput = popupPicture.querySelector('.popup__input_type_name');
+const pictureAdditionInput = popupPicture.querySelector('.popup__input_type_addition');
 const formPicture = popupPicture.querySelector('.popup__form');
 const newCard = {};
 
 const popupProfile = document.querySelector('.popup-profile');
-const closeButtonProfile = popupProfile.querySelector('.popup__button_type_close');
-const nameInputProfile = popupProfile.querySelector('.popup__input_type_name');
-const additionInputProfile = popupProfile.querySelector('.popup__input_type_addition');
+const profileCloseButton = popupProfile.querySelector('.popup__button_type_close');
+const profileNameInput = popupProfile.querySelector('.popup__input_type_name');
+const profileAdditionInput = popupProfile.querySelector('.popup__input_type_addition');
 const formProfile = popupProfile.querySelector('.popup__form');
 
 const popupPreview = document.querySelector('.popup-preview');
 const photoPreviewImg = popupPreview.querySelector('.popup__image');
-const closePreviewButton = popupPreview.querySelector('.popup__button_type_close');
+const previewCloseButton = popupPreview.querySelector('.popup__button_type_close');
 
 const escKeycode = "Escape";
 
-const initialCards = [
-  {
-    name: 'Архыз',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-  },
-  {
-    name: 'Челябинская область',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-  },
-  {
-    name: 'Иваново',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-  },
-  {
-    name: 'Камчатка',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-  },
-  {
-    name: 'Холмогорский район',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-  },
-  {
-    name: 'Байкал',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-  }
-];
+// Закрыть попап
 
-// Функция окрытия и закрытия оверлея
-
-function togglePopupPreview() {
-  popupPreview.classList.toggle('hidden');
+function closeModal(popup) {
+  popup.classList.add('hidden');
 }
 
-// Создать оверлей
+function closePopupProfile() {
+  closeModal(popupProfile);
+}
+
+function closePopupPicture() {
+  closeModal(popupPicture);
+}
+
+function closePopupPreview() {
+  closeModal(popupPreview);
+}
+
+// Overlay
+
+const removeOverlayListeners = (popup) => {
+  popup.removeEventListener('click', (evt) => {clickOverlay(evt, popup);});
+  window.removeEventListener('keydown', (evt) => {keydownOverlay(evt, popup);});
+}
+
+const clickOverlay = (evt, popup) => {
+  if (evt.target == popup) {
+    closeModal(popup);
+    removeOverlayListeners(popup);
+  }
+}
+const keydownOverlay = (evt, popup) => {
+  if (evt.key === escKeycode) {
+    closeModal(popup);
+    removeOverlayListeners(popup);
+  }
+}
+const setOverlayListeners = (popup) => {
+  popup.addEventListener('click', (evt) => {clickOverlay(evt, popup);});
+  window.addEventListener('keydown', (evt) => {keydownOverlay(evt, popup);});
+}
+
+// Открыть попап
+
+function openModal(popup) {
+  popup.classList.remove('hidden');
+}
+
+function openPopupProfile() {
+  profileNameInput.value = profileName.textContent;
+  profileAdditionInput.value = profileJob.textContent;
+
+  disableSubmitButton(popupProfile.querySelector('.popup__button_type_submit'), 'popup__button_inactive');
+  setOverlayListeners(popupProfile);
+  openModal(popupProfile);
+}
+
+function openPopupPicture() {
+  disableSubmitButton(popupPicture.querySelector('.popup__button_type_submit'), 'popup__button_inactive');
+  setOverlayListeners(popupPicture);
+  openModal(popupPicture);
+}
+
+function openPopupPreview() {
+  setOverlayListeners(popupPreview);
+  openModal(popupPreview);
+}
+
+// Открыть фото в оверлее
 
 function openPhotoElement(evt) {
   const picName = evt.target.alt;
@@ -67,8 +102,7 @@ function openPhotoElement(evt) {
   photoPreviewImg.src = evt.target.src;
   photoPreviewImg.alt = picName;
 
-  closePreviewButton.addEventListener('click', togglePopupPreview);
-  togglePopupPreview();
+  openPopupPreview();
 }
 
 // Создать новые фото
@@ -111,50 +145,20 @@ function renderCard(card) {
 
 renderCard(createListPhoto);
 
-// Закрыть попап
-
-function closeModal(popup) {
-  popup.classList.add('hidden');
-}
-
-function closePopupProfile() {
-  closeModal(popupProfile);
-}
-
-function closePopupPicture() {
-  closeModal(popupPicture);
-}
-
-// Открыть попап
-
-function openModal(popup) {
-  popup.classList.remove('hidden');
-}
-
-function openPopupProfile() {
-  nameInputProfile.value = nameProfile.textContent;
-  additionInputProfile.value = jobProfile.textContent;
-
-  openModal(popupProfile);
-}
-
-function openPopupPicture() {
-  openModal(popupPicture);
-}
-
 // Назначить слушатели
 
-editButtonProfile.addEventListener('click', openPopupProfile);
-addButtonProfile.addEventListener('click', openPopupPicture);
+profileEditButton.addEventListener('click', openPopupProfile);
+profileAddButton.addEventListener('click', openPopupPicture);
 
-closeButtonProfile.addEventListener('click', closePopupProfile);
-closeButtonPicture.addEventListener('click', closePopupPicture);
+profileCloseButton.addEventListener('click', closePopupProfile);
+pictureCloseButton.addEventListener('click', closePopupPicture);
+previewCloseButton.addEventListener('click', closePopupPreview);
 
 formProfile.addEventListener('submit', (evt) => {
   evt.preventDefault();
 
-  nameProfile.textContent = nameInputProfile.value;
-  jobProfile.textContent = additionInputProfile.value;
+  profileName.textContent = profileNameInput.value;
+  profileJob.textContent = profileAdditionInput.value;
 
   closePopupProfile();
 });
@@ -162,33 +166,14 @@ formProfile.addEventListener('submit', (evt) => {
 formPicture.addEventListener('submit', (evt) => {
   evt.preventDefault();
 
-  newCard.name = nameInputPicture.value;
-  newCard.link = additionInputPicture.value;
+  newCard.name = pictureNameInput.value;
+  newCard.link = pictureAdditionInput.value;
 
   photoContainer.prepend(createPhotoElement(newCard));
 
-  nameInputPicture.value = '';
-  additionInputPicture.value = '';
+  pictureNameInput.value = '';
+  pictureAdditionInput.value = '';
 
   closePopupPicture();
 });
 
-// Overlay
-
-const setOverlayListeners = () => {
-  const overlayList = Array.from(document.querySelectorAll('.popup'));
-  overlayList.forEach(popup => {
-    popup.addEventListener('click', (evt) => {
-      if (evt.target == popup) {
-        closeModal(popup);
-      }
-    });
-    window.addEventListener('keydown', (evt) => {
-      if (evt.key === escKeycode) {
-        closeModal(popup);
-      }
-    });
-  });
-}
-
-setOverlayListeners();

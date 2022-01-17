@@ -34,13 +34,22 @@ const hasInvalidInput = (inputList) => {
     });
 }
 
+// Активация и деактивация кнопки Submit
+
+const disableSubmitButton = (buttonElement, inactiveButtonClass) => {
+  buttonElement.classList.add(inactiveButtonClass);
+  buttonElement.disabled = true;
+}
+const enableSubmitButton = (buttonElement, inactiveButtonClass) => {
+  buttonElement.classList.remove(inactiveButtonClass);
+  buttonElement.disabled = false;
+}
+
 const toggleButtonState = ({inputList, buttonElement, inactiveButtonClass}) => {
   if (hasInvalidInput(inputList)) {
-    buttonElement.classList.add(inactiveButtonClass);
-    buttonElement.disabled = true;
+    disableSubmitButton(buttonElement, inactiveButtonClass);
   } else {
-    buttonElement.classList.remove(inactiveButtonClass);
-    buttonElement.disabled = false;
+    enableSubmitButton(buttonElement, inactiveButtonClass);
   }
 }
 
