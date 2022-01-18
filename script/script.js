@@ -8,6 +8,7 @@ const photoContainer = document.querySelector('.photo-grid__items');
 const photoImg = photoContainer.querySelector('.photo-grid__image');
 
 const popupPicture = document.querySelector('.popup-picture');
+const pictureSubmitButton = popupPicture.querySelector('.popup__button_type_submit');
 const pictureCloseButton = popupPicture.querySelector('.popup__button_type_close');
 const pictureNameInput = popupPicture.querySelector('.popup__input_type_name');
 const pictureAdditionInput = popupPicture.querySelector('.popup__input_type_addition');
@@ -15,6 +16,7 @@ const formPicture = popupPicture.querySelector('.popup__form');
 const newCard = {};
 
 const popupProfile = document.querySelector('.popup-profile');
+const profileSubmitButton = popupProfile.querySelector('.popup__button_type_submit');
 const profileCloseButton = popupProfile.querySelector('.popup__button_type_close');
 const profileNameInput = popupProfile.querySelector('.popup__input_type_name');
 const profileAdditionInput = popupProfile.querySelector('.popup__input_type_addition');
@@ -24,12 +26,15 @@ const popupPreview = document.querySelector('.popup-preview');
 const photoPreviewImg = popupPreview.querySelector('.popup__image');
 const previewCloseButton = popupPreview.querySelector('.popup__button_type_close');
 
+const classHidden = 'hidden';
 const escKeycode = "Escape";
+const overlayList = Array.from(document.querySelectorAll('.popup'));
 
 // Закрыть попап
 
 function closeModal(popup) {
   popup.classList.add('hidden');
+  removeKeydownOverlay();
 }
 
 function closePopupProfile() {
@@ -46,51 +51,64 @@ function closePopupPreview() {
 
 // Overlay
 
-const removeOverlayListeners = (popup) => {
-  popup.removeEventListener('click', (evt) => {clickOverlay(evt, popup);});
-  window.removeEventListener('keydown', (evt) => {keydownOverlay(evt, popup);});
+const clickOverlay = (evt, popup) => {
+  if (evt.target == popup && !popup.classList.contains(classHidden)) {
+    closeModal(popup);
+  }
 }
 
-const clickOverlay = (evt, popup) => {
-  if (evt.target == popup) {
-    closeModal(popup);
-    removeOverlayListeners(popup);
-  }
+const keydownOverlay = function (evt) {
+
+  const overlayVisible = overlayList.filter((popup) => {
+    if (!popup.classList.contains(classHidden)) {
+      return popup;
+    }
+  });
+
+  overlayVisible.forEach((popup) => {
+    if ((evt.key == escKeycode) && (popup)) {
+      closeModal(popup);
+    }
+  });
 }
-const keydownOverlay = (evt, popup) => {
-  if (evt.key === escKeycode) {
-    closeModal(popup);
-    removeOverlayListeners(popup);
-  }
+
+const setKeydownOverlay = () => {
+  document.addEventListener('keydown', keydownOverlay);
+};
+
+const removeKeydownOverlay = () => {
+  document.removeEventListener('keydown', keydownOverlay);
+};
+
+function setOverlayListeners() {
+  overlayList.forEach(popup => {
+    popup.addEventListener('click', (evt) => {clickOverlay(evt, popup);});
+  });
 }
-const setOverlayListeners = (popup) => {
-  popup.addEventListener('click', (evt) => {clickOverlay(evt, popup);});
-  window.addEventListener('keydown', (evt) => {keydownOverlay(evt, popup);});
-}
+
+setOverlayListeners();
 
 // Открыть попап
 
 function openModal(popup) {
-  popup.classList.remove('hidden');
+  popup.classList.remove(classHidden);
+  setKeydownOverlay();
 }
 
 function openPopupProfile() {
   profileNameInput.value = profileName.textContent;
   profileAdditionInput.value = profileJob.textContent;
 
-  disableSubmitButton(popupProfile.querySelector('.popup__button_type_submit'), 'popup__button_inactive');
-  setOverlayListeners(popupProfile);
+  disableSubmitButton(profileSubmitButton, validationForm.inactiveButtonClass);
   openModal(popupProfile);
 }
 
 function openPopupPicture() {
-  disableSubmitButton(popupPicture.querySelector('.popup__button_type_submit'), 'popup__button_inactive');
-  setOverlayListeners(popupPicture);
+  disableSubmitButton(pictureSubmitButton, validationForm.inactiveButtonClass);
   openModal(popupPicture);
 }
 
 function openPopupPreview() {
-  setOverlayListeners(popupPreview);
   openModal(popupPreview);
 }
 

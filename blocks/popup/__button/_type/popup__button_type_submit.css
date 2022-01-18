@@ -15,7 +15,7 @@
   margin: 25px 0 0;
 }
 
-.popup__button_type_submit:hover {
+.popup__button_type_submit:not(:disabled):hover {
   cursor: pointer;
   opacity: .8;
 }
