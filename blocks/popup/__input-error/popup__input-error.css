@@ -7,8 +7,7 @@
   line-height: 1.2;
   min-height: 29px;
   color: #f00;
-  margin-top: 5px;
+  margin-top: 4px;
   opacity: 0;
   transition: height 0ms 400ms, opacity 400ms 0ms;
-  z-index: 10;
 }

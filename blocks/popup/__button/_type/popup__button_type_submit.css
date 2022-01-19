@@ -12,7 +12,7 @@
   color: #fff;
   padding: 14px 0;
   transition: opacity .3s ease-out 0s;
-  margin: 25px 0 0;
+  margin: 13px 0 0;
 }
 
 .popup__button_type_submit:not(:disabled):hover {

@@ -86,7 +86,17 @@ function setOverlayListeners() {
   });
 }
 
-setOverlayListeners();
+
+// Сброс полей формы после ошибок
+
+const resetInputError = (formElement, inputSelector, inputErrorClass, errorClass) => {
+  const inputList = Array.from(formElement.querySelectorAll(inputSelector));
+
+  inputList.forEach((inputElement) => {
+    hideInputError(formElement, inputElement, inputErrorClass, errorClass);
+  });
+}
+
 
 // Открыть попап
 
@@ -96,6 +106,9 @@ function openModal(popup) {
 }
 
 function openPopupProfile() {
+  resetInputError(formProfile, validationForm.inputSelector,
+    validationForm.inputErrorClass, validationForm.errorClass);
+
   profileNameInput.value = profileName.textContent;
   profileAdditionInput.value = profileJob.textContent;
 
@@ -104,6 +117,10 @@ function openPopupProfile() {
 }
 
 function openPopupPicture() {
+  formPicture.reset();
+  resetInputError(formPicture, validationForm.inputSelector,
+    validationForm.inputErrorClass, validationForm.errorClass);
+
   disableSubmitButton(pictureSubmitButton, validationForm.inactiveButtonClass);
   openModal(popupPicture);
 }
@@ -195,3 +212,4 @@ formPicture.addEventListener('submit', (evt) => {
   closePopupPicture();
 });
 
+setOverlayListeners();
