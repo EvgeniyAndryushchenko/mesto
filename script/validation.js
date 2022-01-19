@@ -9,6 +9,13 @@ const validationForm = {
 
 // Сброс полей формы после ошибок
 
+const hideInputError = (formElement, inputElement, inputErrorClass, errorClass) => {
+  const errorElement = formElement.querySelector(`#${inputElement.id}-error`);
+  inputElement.classList.remove(inputErrorClass);
+  errorElement.classList.remove(errorClass);
+  errorElement.textContent = '';
+}
+
 const resetInputError = (formElement, inputSelector, inputErrorClass, errorClass) => {
   const inputList = Array.from(formElement.querySelectorAll(inputSelector));
 
@@ -27,18 +34,9 @@ const showInputError = (formElement, inputElement, errorMessage, inputErrorClass
   inputElement.classList.add(inputErrorClass);
   errorElement.textContent = errorMessage;
   errorElement.classList.add(errorClass);
-  const closeButtonElement = formElement.querySelector('.popup__button_type_close');
-  closeButtonElement.addEventListener('click', () => {
-    hideInputError(formElement, inputElement, inputErrorClass, errorClass);
-  });
 }
 
-const hideInputError = (formElement, inputElement, inputErrorClass, errorClass) => {
-  const errorElement = formElement.querySelector(`#${inputElement.id}-error`);
-  inputElement.classList.remove(inputErrorClass);
-  errorElement.classList.remove(errorClass);
-  errorElement.textContent = '';
-}
+
 
 const checkInputValidity = (formElement, inputElement, inputErrorClass, errorClass) => {
   if (!inputElement.validity.valid) {
