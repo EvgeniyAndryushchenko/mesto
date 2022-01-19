@@ -86,18 +86,6 @@ function setOverlayListeners() {
   });
 }
 
-
-// Сброс полей формы после ошибок
-
-const resetInputError = (formElement, inputSelector, inputErrorClass, errorClass) => {
-  const inputList = Array.from(formElement.querySelectorAll(inputSelector));
-
-  inputList.forEach((inputElement) => {
-    hideInputError(formElement, inputElement, inputErrorClass, errorClass);
-  });
-}
-
-
 // Открыть попап
 
 function openModal(popup) {
@@ -169,7 +157,7 @@ function createPhotoElement(data) {
   return photoItem;
 }
 
-let createListPhoto = initialCards.map((item) => {
+const createListPhoto = initialCards.map((item) => {
   return createPhotoElement(item);
 });
 
@@ -180,25 +168,18 @@ function renderCard(card) {
 
 renderCard(createListPhoto);
 
-// Назначить слушатели
+// Подтверждение форм
 
-profileEditButton.addEventListener('click', openPopupProfile);
-profileAddButton.addEventListener('click', openPopupPicture);
-
-profileCloseButton.addEventListener('click', closePopupProfile);
-pictureCloseButton.addEventListener('click', closePopupPicture);
-previewCloseButton.addEventListener('click', closePopupPreview);
-
-formProfile.addEventListener('submit', (evt) => {
+const submitProfile = (evt) => {
   evt.preventDefault();
 
   profileName.textContent = profileNameInput.value;
   profileJob.textContent = profileAdditionInput.value;
 
   closePopupProfile();
-});
+}
 
-formPicture.addEventListener('submit', (evt) => {
+const submitPicture = (evt) => {
   evt.preventDefault();
 
   newCard.name = pictureNameInput.value;
@@ -210,6 +191,18 @@ formPicture.addEventListener('submit', (evt) => {
   pictureAdditionInput.value = '';
 
   closePopupPicture();
-});
+}
+
+// Назначить слушатели
+
+profileEditButton.addEventListener('click', openPopupProfile);
+profileAddButton.addEventListener('click', openPopupPicture);
+
+profileCloseButton.addEventListener('click', closePopupProfile);
+pictureCloseButton.addEventListener('click', closePopupPicture);
+previewCloseButton.addEventListener('click', closePopupPreview);
+
+formProfile.addEventListener('submit', submitProfile);
+formPicture.addEventListener('submit', submitPicture);
 
 setOverlayListeners();

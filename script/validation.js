@@ -7,6 +7,18 @@ const validationForm = {
   errorClass: 'popup__input-error_active'
 }
 
+// Сброс полей формы после ошибок
+
+const resetInputError = (formElement, inputSelector, inputErrorClass, errorClass) => {
+  const inputList = Array.from(formElement.querySelectorAll(inputSelector));
+
+  inputList.forEach((inputElement) => {
+    hideInputError(formElement, inputElement, inputErrorClass, errorClass);
+  });
+}
+
+// Отображение ошибок валидации
+
 const showInputError = (formElement, inputElement, errorMessage, inputErrorClass, errorClass) => {
   inputElement.addEventListener('input', function (evt) {
     evt.preventDefault();
@@ -60,6 +72,8 @@ const toggleButtonState = (inputList, buttonElement, inactiveButtonClass) => {
     enableSubmitButton(buttonElement, inactiveButtonClass);
   }
 }
+
+// Установка слушателей на поля ввода
 
 const setEventListeners = (formElement, inputSelector, submitButtonSelector,
   inactiveButtonClass, inputErrorClass, errorClass) => {
