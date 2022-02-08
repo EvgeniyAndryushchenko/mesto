@@ -1,5 +1,5 @@
 import {initialCards, Card} from './Card.js';
-import {validationForm, FormValidator} from './FormValidator.js';
+import {FormValidator} from './FormValidator.js';
 
 const profile = document.querySelector('.profile');
 const profileName = profile.querySelector('.profile__name');
@@ -31,6 +31,14 @@ const escKeycode = "Escape";
 const overlayList = Array.from(document.querySelectorAll('.popup'));
 const templatePhotoSelector = '#template-photo';
 
+const validationForm = {
+  formSelector: '.popup__form',
+  inputSelector: '.popup__input',
+  submitButtonSelector: '.popup__button_type_submit',
+  inactiveButtonClass: 'popup__button_inactive',
+  inputErrorClass: 'popup__input_type_error',
+  errorClass: 'popup__input-error_active'
+};
 
 // Закрыть попап
 
@@ -88,14 +96,8 @@ function setOverlayListeners() {
   });
 }
 
+
 // Открыть попап
-
-
-const validation = new FormValidator(validationForm);
-validation.enableValidation(validationForm);
-console.log(validation);
-
-
 
 function openModal(popup) {
   popup.classList.remove(classHidden);
@@ -103,20 +105,20 @@ function openModal(popup) {
 }
 
 function openPopupProfile() {
-  validation.resetInputError(formProfile);
+  validationFormProfile.resetInputError(formProfile);
 
   profileNameInput.value = profileName.textContent;
   profileAdditionInput.value = profileJob.textContent;
 
-  validation.disableSubmitButton(profileSubmitButton);
+  validationFormProfile.disableSubmitButton(profileSubmitButton);
   openModal(popupProfile);
 }
 
 function openPopupPicture() {
   formPicture.reset();
-  validation.resetInputError(formPicture);
+  validationFormPicture.resetInputError(formPicture);
 
-  validation.disableSubmitButton(pictureSubmitButton);
+  validationFormPicture.disableSubmitButton(pictureSubmitButton);
   openModal(popupPicture);
 }
 
@@ -160,12 +162,12 @@ const submitProfile = (evt) => {
 const submitPicture = (evt) => {
   evt.preventDefault();
 
-  const newCard = [{}];
+  const newCards = [{}];
 
-  newCard[0].name = pictureNameInput.value;
-  newCard[0].link = pictureAdditionInput.value;
+  newCards[0].name = pictureNameInput.value;
+  newCards[0].link = pictureAdditionInput.value;
 
-  renderCard(newCard, templatePhotoSelector);
+  renderCard(newCards, templatePhotoSelector);
   closePopupPicture();
 }
 
@@ -184,17 +186,11 @@ formPicture.addEventListener('submit', submitPicture);
 renderCard(initialCards, templatePhotoSelector);
 setOverlayListeners();
 
-// function validateForm(data) {
-//   data.forEach(element => {
-//     const validation = new FormValidator(element);
-//   });
+// Проверка полей ввода
 
-// }
-
-
-
-// validateForm(validationForm);
-// FormValidator.enableValidation();
+const validationFormPicture = new FormValidator(validationForm, popupPicture);
+const validationFormProfile = new FormValidator(validationForm, popupProfile);
+validationFormPicture.enableValidation();
+validationFormProfile.enableValidation();
 
 export {openPhotoElement};
-

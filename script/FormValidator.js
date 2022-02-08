@@ -1,16 +1,9 @@
-const validationForm = {
-  formSelector: '.popup__form',
-  inputSelector: '.popup__input',
-  submitButtonSelector: '.popup__button_type_submit',
-  inactiveButtonClass: 'popup__button_inactive',
-  inputErrorClass: 'popup__input_type_error',
-  errorClass: 'popup__input-error_active'
-};
 
 // Сброс полей формы после ошибок
 
 class FormValidator {
-  constructor(data) {
+  constructor(data, popupSelector) {
+    this._popupSelector = popupSelector;
     this._formSelector = data.formSelector;
     this._inputSelector = data.inputSelector;
     this._submitButtonSelector = data.submitButtonSelector;
@@ -35,7 +28,7 @@ class FormValidator {
     });
     this.errorElement = formElement.querySelector(`#${inputElement.id}-error`);
     inputElement.classList.add(this._inputErrorClass);
-    this.errorElement.textContent = this._errorMessage;
+    this.errorElement.textContent = inputElement.validationMessage;
     this.errorElement.classList.add(this._errorClass);
   }
 
@@ -47,8 +40,6 @@ class FormValidator {
   }
 
   _checkInputValidity (formElement, inputElement) {
-    console.log(formElement);
-    console.log(inputElement);
     if (!inputElement.validity.valid) {
       this._showInputError(formElement, inputElement);
     } else {
@@ -59,7 +50,7 @@ class FormValidator {
   _hasInvalidInput = (inputList) => {
     return inputList.some((inputElement) => {
       return !inputElement.validity.valid;
-      });
+    });
   }
 
 // Активация и деактивация кнопки Submit
@@ -85,31 +76,30 @@ class FormValidator {
   // Установка слушателей на поля ввода
 
   _setEventListeners (formElement) {
+    const buttonElement = formElement.querySelector(this._submitButtonSelector);
     this.inputList = Array.from(formElement.querySelectorAll(this._inputSelector));
-    this.buttonElement = formElement.querySelector(this._submitButtonSelector);
-    this._toggleButtonState(this.inputList, this.buttonElement);
+    this._toggleButtonState(this.inputList, buttonElement);
 
     this.inputList.forEach((inputElement) => {
       inputElement.addEventListener('input', () => {
-        console.log(formElement);
-        console.log(inputElement);
         this._checkInputValidity(formElement, inputElement);
-        this._toggleButtonState(this.inputList, this.buttonElement);
+        this._toggleButtonState(this.inputList, buttonElement);
       });
     });
   }
 
-
   enableValidation() {
-    this.formList = Array.from(document.querySelectorAll(this._formSelector));
+     this.formList = Array.from(this._popupSelector.querySelectorAll(this._formSelector));
+
     this.formList.forEach((formElement) => {
       formElement.addEventListener('submit', function (evt) {
         evt.preventDefault();
       });
+
       this._setEventListeners(formElement);
     });
   }
 }
 
 
-export {validationForm, FormValidator};
+export {FormValidator};
