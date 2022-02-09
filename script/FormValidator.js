@@ -1,6 +1,3 @@
-
-// Сброс полей формы после ошибок
-
 class FormValidator {
   constructor(data, popupSelector) {
     this._popupSelector = popupSelector;
@@ -11,6 +8,8 @@ class FormValidator {
     this._inputErrorClass = data.inputErrorClass;
     this._errorClass = data.errorClass;
   }
+
+// Сброс полей формы после ошибок
 
   resetInputError (formElement) {
     this.inputList = Array.from(formElement.querySelectorAll(this._inputSelector));
@@ -73,7 +72,7 @@ class FormValidator {
     }
   }
 
-  // Установка слушателей на поля ввода
+// Установка слушателей на поля ввода
 
   _setEventListeners (formElement) {
     const buttonElement = formElement.querySelector(this._submitButtonSelector);

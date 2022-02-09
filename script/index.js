@@ -1,5 +1,6 @@
-import {initialCards, Card} from './Card.js';
+import {Card} from './Card.js';
 import {FormValidator} from './FormValidator.js';
+import {initialCards, validationForm} from '../utils/constants.js';
 
 const profile = document.querySelector('.profile');
 const profileName = profile.querySelector('.profile__name');
@@ -24,6 +25,7 @@ const formProfile = popupProfile.querySelector('.popup__form');
 
 const popupPreview = document.querySelector('.popup-preview');
 const photoPreviewImg = popupPreview.querySelector('.popup__image');
+const popupPreviewHeading = popupPreview.querySelector('.popup__open-heading')
 const previewCloseButton = popupPreview.querySelector('.popup__button_type_close');
 
 const classHidden = 'hidden';
@@ -31,14 +33,6 @@ const escKeycode = "Escape";
 const overlayList = Array.from(document.querySelectorAll('.popup'));
 const templatePhotoSelector = '#template-photo';
 
-const validationForm = {
-  formSelector: '.popup__form',
-  inputSelector: '.popup__input',
-  submitButtonSelector: '.popup__button_type_submit',
-  inactiveButtonClass: 'popup__button_inactive',
-  inputErrorClass: 'popup__input_type_error',
-  errorClass: 'popup__input-error_active'
-};
 
 // Закрыть попап
 
@@ -67,7 +61,7 @@ const clickOverlay = (evt, popup) => {
   }
 }
 
-const keydownOverlay = function (evt) {
+const keydownOverlay = (evt) => {
 
   const overlayVisible = overlayList.filter((popup) => {
     if (!popup.classList.contains(classHidden)) {
@@ -95,7 +89,6 @@ function setOverlayListeners() {
     popup.addEventListener('click', (evt) => {clickOverlay(evt, popup);});
   });
 }
-
 
 // Открыть попап
 
@@ -130,7 +123,7 @@ function openPopupPreview() {
 
 function openPhotoElement(evt) {
   const picName = evt.target.alt;
-  popupPreview.querySelector('.popup__open-heading').textContent = picName.slice(0, - 1);
+  popupPreviewHeading.textContent = picName.slice(0, - 1);
   photoPreviewImg.src = evt.target.src;
   photoPreviewImg.alt = picName;
 
@@ -139,13 +132,17 @@ function openPhotoElement(evt) {
 
 // Создать новые фото
 
-function renderCard(data, cardSelector) {
-  data.forEach(element => {
-    const card = new Card(element, cardSelector);
-    const cardElement = card.generateCard();
-    photoContainer.prepend(cardElement);
-  });
+function createCard(item, cardSelector) {
+  const card = new Card(item, cardSelector);
+  const cardElement = card.generateCard();
+  return cardElement;
+}
 
+
+function renderCard(data, cardSelector) {
+  data.forEach((item) => {
+    photoContainer.prepend(createCard(item, cardSelector));
+  });
 }
 
 // Подтверждение форм
@@ -184,6 +181,8 @@ formProfile.addEventListener('submit', submitProfile);
 formPicture.addEventListener('submit', submitPicture);
 
 renderCard(initialCards, templatePhotoSelector);
+
+
 setOverlayListeners();
 
 // Проверка полей ввода
